@@ -1,0 +1,97 @@
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+@mixin flex-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@mixin flex-column-between {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin container {
+  max-width: px-to-rem(1320);
+  margin: 0 auto;
+  padding: 0 px-to-rem(16);
+}
+
+@mixin product-grid($columns: auto-fill, $min: 228, $gap: 24, $padding: 20, $border: true, $minHeight: null) {
+  display: grid;
+  grid-template-columns: repeat(#{$columns}, minmax(px-to-rem($min), 1fr));
+  gap: px-to-rem($gap);
+  padding: px-to-rem($padding);
+  @if $border {
+    border-bottom: 1px solid $light-gray-stroke;
+  }
+  @if $minHeight != null {
+    min-height: $minHeight;
+  }
+}
+
+
+%cta-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  overflow: hidden !important;
+  border: none;
+  padding: 10px 20px;
+  border-radius: px-to-rem(3);
+  color: #666;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: color 0.5s, transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -100px;
+    width: 30px;
+    height: 140%;
+    background: #ffffffc0; 
+    opacity: 0.3;
+    z-index: 0;
+    transform: translateY(-50%) rotate(20deg);
+    transition: left 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+
+  &:hover {
+    color: #333;
+
+    &::before {
+      left: calc(100% + 100px);
+    }
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
