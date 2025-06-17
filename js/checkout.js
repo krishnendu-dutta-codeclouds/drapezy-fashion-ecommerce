@@ -387,7 +387,6 @@ window.removeSummaryItem = function(idx) {
     summary.totalDiscount = 0;
     summary.platformFees = 5;
     summary.total = 0;
-    // Redirect to cart page if all items are removed
     window.location.href = 'cart.html';
     return;
   }
